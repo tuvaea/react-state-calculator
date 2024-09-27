@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 function PanelNumbers({ panel, calculator }) {
-    const { leftNumber, rightNumber, pressNumber, clearNumber } = calculator;
+    const { leftNumber, rightNumber, pressNumber, clearNumber, getStoredResult } = calculator;
     const number = panel === 'left' ? leftNumber : rightNumber;
 
     return (
@@ -19,6 +19,7 @@ function PanelNumbers({ panel, calculator }) {
           <button onClick={() => pressNumber(panel, '9')}>9</button>
           <button onClick={() => pressNumber(panel, '0')}>0</button>
           <button onClick={() => clearNumber(panel)}>Clear</button>
+          <button onClick={() => getStoredResult(panel)}>Recall</button>
         </div>
       </div>
     )

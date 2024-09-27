@@ -4,7 +4,24 @@ export function useCalculator() {
     const [leftNumber, setLeftNumber] = useState('0');
     const [rightNumber, setRightNumber] = useState('0');
     const [operator, setOperator] = useState('+');
-    const [result, setResult] = useState(2)
+    const [result, setResult] = useState(0);
+    const [storedResult, setStoredResult] = useState(0);
+
+    const storeResult = () => {
+        setStoredResult(result);
+        console.log(storedResult);
+    }
+
+    const getStoredResult = (panel) => {
+        if (panel === 'left') {
+            setLeftNumber(storedResult);
+            console.log(leftNumber);
+        } else if (panel === 'right') {
+            setRightNumber(storedResult);
+            console.log(rightNumber);
+
+        }
+    }
 
     const pressNumber = (panel, pressedNumber) => {
         console.log(`Pressed number: ${pressedNumber} on ${panel}`);
@@ -69,5 +86,7 @@ export function useCalculator() {
         pressOperator,
         result,
         pressEquals,
+        storeResult,
+        getStoredResult,
     };
 }
